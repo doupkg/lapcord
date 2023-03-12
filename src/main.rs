@@ -20,13 +20,13 @@ struct State {}
 register_plugin!(State);
 
 fn initialize(params: InitializeParams) -> Result<()> {
-    let plugin_params = params
+    let dou = params
         .initialization_options
         .as_ref()
         .and_then(|options| options.get("dou"))
-        .and_then(|plugin_params| plugin_params.as_str());
+        .and_then(|dou| dou.as_str());
 
-    PLUGIN_RPC.window_show_message(MessageType::INFO, format!("{:#?}", plugin_params)); //Some("parametro especificado en la configuracion del plugin")
+    PLUGIN_RPC.window_show_message(MessageType::INFO, format!("{:#?}", dou)); //Some("parametro especificado en la configuracion del plugin")
     Ok(())
 }
 
