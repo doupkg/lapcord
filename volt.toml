@@ -14,19 +14,3 @@ workspace-contains = ["*"]
 [config."dou"]
 default = ""
 description = "Path to custom LSP executable"
-
-# [config."lsp.serverArgs"]
-# default = []
-# description = ""
-
-# [config."lspSettingArray"]
-# default = []
-# description = ""
-
-# [config."lspSettingString"]
-# default = ""
-# description = ""
-
-# [config."lspSettingBool"]
-# default = false
-# description = ""
