@@ -1,0 +1,8 @@
+/target/
+
+**/*.rs.bk
+
+/bin/
+
+.crates.toml
+.crates2.json
