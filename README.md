@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=LeonardSSH.vscord" target="_blank" rel="noopener noreferrer">
-    <img width="256" src="./lapcord-logo.png" alt="VSCord Logo">
+  <a href="" target="_blank" rel="noopener noreferrer">
+    <img width="256" src="./lapcord-logo.png" alt="Lapcord Logo">
   </a>
 </p>
 
@@ -10,8 +10,7 @@
 
 ## Features
 
-- Shows what you are editing in VSCode
-- More soon!
+- Shows what you are editing in Lapce Editor
 
 ## Preview
 
@@ -37,4 +36,4 @@ Soon
 
 ## License
 
-Working in that
+Idk
