@@ -1,6 +1,3 @@
-// Deny usage of print and eprint as it won't have same result
-// in WASI as if doing in standard program, you must really know
-// what you are doing to disable that lint (and you don't know)
 #![deny(clippy::print_stdout)]
 #![deny(clippy::print_stderr)]
 
@@ -14,19 +11,24 @@ use lapce_plugin::{
 };
 use serde_json::Value;
 
+use discord_rich_presence::{activity, DiscordIpc, DiscordIpcClient};
+
 #[derive(Default)]
 struct State {}
 
 register_plugin!(State);
 
+//When the user opens Lapce execute this
 fn initialize(params: InitializeParams) -> Result<()> {
-    let dou = params
-        .initialization_options
-        .as_ref()
-        .and_then(|options| options.get("dou"))
-        .and_then(|dou| dou.as_str());
+    let mut client = DiscordIpcClient::new("1000000000000000000")?;
 
-    PLUGIN_RPC.window_show_message(MessageType::INFO, format!("{:#?}", dou)); //Some("parametro especificado en la configuracion del plugin")
+    client.connect()?;
+    client.set_activity(activity::Activity::new()
+        .state("Testing")
+        .details("RPC Rust")
+    )?;
+    client.close()?;
+
     Ok(())
 }
 
@@ -37,7 +39,7 @@ impl LapcePlugin for State {
             Initialize::METHOD => {
                 let params: InitializeParams = serde_json::from_value(params).unwrap();
                 if let Err(e) = initialize(params) {
-                    PLUGIN_RPC.window_show_message(MessageType::ERROR, format!("plugin returned with error: {e}"));
+                    PLUGIN_RPC.window_show_message(MessageType::ERROR, format!("plugin returned with error: {e}"))
                 }
             }
             _ => {}
