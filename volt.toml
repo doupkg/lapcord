@@ -1,5 +1,5 @@
 name = "Lapcord"
-version = "0.0.2a"
+version = "0.0.3"
 author = "Dou"
 display-name = "Lapcord"
 description = "Discord Rich Presence extension for Lapce Editor."
