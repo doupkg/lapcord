@@ -11,8 +11,6 @@ use lapce_plugin::{
 };
 use serde_json::Value;
 
-use discord_rich_presence::{activity, DiscordIpc, DiscordIpcClient};
-
 #[derive(Default)]
 struct State {}
 
@@ -20,15 +18,14 @@ register_plugin!(State);
 
 //When the user opens Lapce execute this
 fn initialize(params: InitializeParams) -> Result<()> {
-    let mut client = DiscordIpcClient::new("1000000000000000000")?;
-
-    client.connect()?;
-    client.set_activity(activity::Activity::new()
-        .state("Testing")
-        .details("RPC Rust")
-    )?;
-    client.close()?;
-
+    let document_selector: DocumentSelector = vec![DocumentFilter {
+        // lsp language id Some(string!("typescript"))
+        language: None,
+        // glob pattern
+        pattern: None,
+        // like file:
+        scheme: None,
+    }];
     Ok(())
 }
 
@@ -40,6 +37,7 @@ impl LapcePlugin for State {
                 let params: InitializeParams = serde_json::from_value(params).unwrap();
                 if let Err(e) = initialize(params) {
                     PLUGIN_RPC.window_show_message(MessageType::ERROR, format!("plugin returned with error: {e}"))
+                        .expect("Error")
                 }
             }
             _ => {}
