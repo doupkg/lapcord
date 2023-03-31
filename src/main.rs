@@ -77,8 +77,8 @@ fn initialize(params: InitializeParams) -> Result<()> {
 
     // Plugin working directory
     let server_uri = match VoltEnvironment::operating_system().as_deref() {
-        Ok("windows") => ok!(Url::parse("urn:lsp-test.cmd")),
-        _ => ok!(Url::parse("urn:lsp-test")),
+        | Ok("windows") => ok!(Url::parse("urn:lapcord.cmd")),
+        | _ => ok!(Url::parse("urn:lapcord")),
     };
 
     // if you want to use server from PATH
