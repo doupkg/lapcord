@@ -1,16 +1,20 @@
-name = "Lapcord"
-version = "0.0.3"
+name = "dou.lapcord"
 author = "Dou"
-display-name = "Lapcord"
+version = "0.0.4"
 description = "Discord Rich Presence extension for Lapce Editor."
+display-name = "Lapcord"
 wasm = "bin/lapcord.wasm"
-icon = "lapcord-logo.png"
+icon = "assets/logo.png"
 repository = "https://github.com/dzlib/lapcord"
 
 [activation]
 language = []
 workspace-contains = ["*"]
 
-[config."dou"]
+[config."lsp.serverPath"]
 default = ""
 description = "Path to custom LSP executable"
+
+[config."lsp.serverArgs"]
+default = []
+description = ""
