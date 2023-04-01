@@ -1,6 +1,6 @@
 #![deny(clippy::print_stdout)]
 #![deny(clippy::print_stderr)]
-//no sirve
+
 use anyhow::{anyhow, Result};
 use lapce_plugin::{
     psp_types::{
@@ -77,8 +77,8 @@ fn initialize(params: InitializeParams) -> Result<()> {
 
     // Plugin working directory
     let server_uri = match VoltEnvironment::operating_system().as_deref() {
-        | Ok("windows") => ok!(Url::parse("urn:lapcord.cmd")),
-        | _ => ok!(Url::parse("urn:lapcord")),
+        Ok("windows") => ok!(Url::parse("urn:lapcord.cmd")),
+        _ => ok!(Url::parse("urn:lapcord")),
     };
 
     // if you want to use server from PATH
