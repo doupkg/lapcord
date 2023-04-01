@@ -3,7 +3,7 @@ version = "0.0.3"
 author = "Dou"
 display-name = "Lapcord"
 description = "Discord Rich Presence extension for Lapce Editor."
-wasm = "lapcord.wasm"
+wasm = "bin/lapcord.wasm"
 icon = "lapcord-logo.png"
 repository = "https://github.com/dzlib/lapcord"
 
