@@ -10,6 +10,7 @@
     <img alt="GitHub contributors (via allcontributors.org)" src="https://img.shields.io/github/all-contributors/dzlib/lapcord?label=Contributors&logo=Handshake">
     <img alt="GitHub" src="https://img.shields.io/github/license/dzlib/lapcord?label=License&logo=GitHub">
 </div>
+<br>
 
 [Discord Rich Presence](https://discord.com/rich-presence) extension for [Lapce Editor](https://lapce.dev/).
 
