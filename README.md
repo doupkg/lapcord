@@ -1,6 +1,6 @@
 <div align='center'>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
     <a href="" target="_blank" rel="noopener noreferrer">
         <img width="256" src="assets/logo.png" alt="Lapcord Logo">
@@ -40,6 +40,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/DexSlender"><img src="https://avatars.githubusercontent.com/u/91853649?v=4?s=100" width="100px;" alt="DexSlender"/><br /><sub><b>DexSlender</b></sub></a><br /><a href="https://github.com/dzlib/lapcord/commits?author=DexSlender" title="Code">💻</a> <a href="#ideas-DexSlender" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/dzlib/lapcord/commits?author=DexSlender" title="Tests">⚠️</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.jesusale.cf/"><img src="https://avatars.githubusercontent.com/u/54212600?v=4?s=100" width="100px;" alt="Jesus Alejandro"/><br /><sub><b>Jesus Alejandro</b></sub></a><br /><a href="https://github.com/dzlib/lapcord/commits?author=jesus-ale43" title="Code">💻</a> <a href="https://github.com/dzlib/lapcord/commits?author=jesus-ale43" title="Tests">⚠️</a></td>
     </tr>
   </tbody>
 </table>
