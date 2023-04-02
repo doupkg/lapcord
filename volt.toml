@@ -1,8 +1,8 @@
 name = "dou.lapcord"
 author = "Dou"
 version = "0.0.4"
-description = "Discord Rich Presence extension for Lapce Editor."
 display-name = "Lapcord"
+description = "Discord Rich Presence extension for Lapce Editor."
 wasm = "bin/lapcord.wasm"
 icon = "assets/logo.png"
 repository = "https://github.com/dzlib/lapcord"
@@ -11,10 +11,34 @@ repository = "https://github.com/dzlib/lapcord"
 language = []
 workspace-contains = ["*"]
 
-[config."lsp.serverPath"]
+[config."volt.serverPath"]
 default = ""
 description = "Path to custom LSP executable"
 
-[config."lsp.serverArgs"]
+[config."volt.serverArgs"]
 default = []
-description = ""
+description = "Arguments to pass to custom Go LSP executable"
+
+[config."lapcord.editing.state"]
+default = "Editing {filename}"
+description = "State when editing file"
+
+[config."lapcord.editing.details"]
+default = ""
+description = "Details when editing file"
+
+[config."lapcord.editing.showTimestamp"]
+default = true
+description = "Show timestamp when editing file"
+
+[config."lapcord.idle.state"]
+default = "Idle"
+description = "State when idle or AFK"
+
+[config."lapcord.idle.details"]
+default = ""
+description = "Details when idle or AFK"
+
+[config."lapcord.idle.showTimestamp"]
+default = ""
+description = "Show timestamp when idle or AFK"
