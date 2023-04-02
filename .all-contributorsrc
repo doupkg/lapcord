@@ -16,6 +16,16 @@
         "ideas",
         "test"
       ]
+    },
+    {
+      "login": "jesus-ale43",
+      "name": "Jesus Alejandro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54212600?v=4",
+      "profile": "https://www.jesusale.cf/",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
