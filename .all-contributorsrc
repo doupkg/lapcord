@@ -26,6 +26,17 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "Hyduez",
+      "name": "Paulo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/79933487?v=4",
+      "profile": "http://matrix.to/#/@paulo:envs.net",
+      "contributions": [
+        "code",
+        "ideas",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
