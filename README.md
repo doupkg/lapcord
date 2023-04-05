@@ -8,6 +8,7 @@
 <div align='center'>
     <img alt="Discord" src="https://img.shields.io/discord/876339668956893216?label=Discord&logo=Discord">
     <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+    <img alt="GitHub contributors (via allcontributors.org)" src="https://img.shields.io/github/all-contributors/dzlib/lapcord?label=Contributors&logo=HandShake">
     <!-- ALL-CONTRIBUTORS-BADGE:END -->
     <img alt="GitHub" src="https://img.shields.io/github/license/dzlib/lapcord?label=License&logo=GitHub">
 </div>
