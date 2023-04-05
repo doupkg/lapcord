@@ -17,7 +17,7 @@
 # Lapcord
 ### A simple [Discord Rich Presence](https://discord.com/rich-presence) plugin for [Lapce Editor](https://lapce.dev/)
 
->This project is currently in Beta, and there are still languages to be added :)
+>This project is currently in pre-dev, and there are still languages to be added :)
 
 ## Features
 - Shows what you are editing
