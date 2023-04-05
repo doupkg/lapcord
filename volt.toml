@@ -5,7 +5,7 @@ display-name = "Lapcord"
 description = "Discord Rich Presence extension for Lapce Editor."
 wasm = "bin/lapcord.wasm"
 icon = "assets/logo.png"
-repository = "https://github.com/dzlib/lapcord"
+repository = "https://github.com/doupkg/lapcord"
 
 [activation]
 language = []
