@@ -9,8 +9,8 @@
 <p>
     <p align="center">
         <img alt="Discord" src="https://img.shields.io/discord/876339668956893216?label=Discord&logo=Discord">
-        <img alt="GitHub contributors (via allcontributors.org)" src="https://img.shields.io/github/all-contributors/dzlib/lapcord?label=Contributors&logo=HandShake">
-        <img alt="GitHub" src="https://img.shields.io/github/license/dzlib/lapcord?label=License&logo=GitHub">
+        <img alt="GitHub contributors (via allcontributors.org)" src="https://img.shields.io/github/all-contributors/doupkg/lapcord?label=Contributors&logo=HandShake">
+        <img alt="GitHub" src="https://img.shields.io/github/license/doupkg/lapcord?label=License&logo=GitHub">
     </p>
 </p>
 
