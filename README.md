@@ -1,36 +1,45 @@
-<div align='center'>
-    <a href="" target="_blank" rel="noopener noreferrer">
-        <img width="256" src="assets/logo.png" alt="Lapcord Logo">
-    </a>
-    <h1> Lapcord </h1>
-</div>
+<p align="center">
+  <a href="https://plugins.lapce.dev/plugins/dou/lapcord">
+    <img width="200" src="assets/logo.png">
+  </a>
+</p>
 
-<div align='center'>
-    <img alt="Discord" src="https://img.shields.io/discord/876339668956893216?label=Discord&logo=Discord">
-    <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-    <img alt="GitHub contributors (via allcontributors.org)" src="https://img.shields.io/github/all-contributors/dzlib/lapcord?label=Contributors&logo=HandShake">
-    <!-- ALL-CONTRIBUTORS-BADGE:END -->
-    <img alt="GitHub" src="https://img.shields.io/github/license/dzlib/lapcord?label=License&logo=GitHub">
-</div>
 <br>
 
-[Discord Rich Presence](https://discord.com/rich-presence) extension for [Lapce Editor](https://lapce.dev/).
+<p>
+    <p align="center">
+        <img alt="Discord" src="https://img.shields.io/discord/876339668956893216?label=Discord&logo=Discord">
+        <img alt="GitHub contributors (via allcontributors.org)" src="https://img.shields.io/github/all-contributors/dzlib/lapcord?label=Contributors&logo=HandShake">
+        <img alt="GitHub" src="https://img.shields.io/github/license/dzlib/lapcord?label=License&logo=GitHub">
+    </p>
+</p>
+
+# Lapcord
+### A simple [Discord Rich Presence](https://discord.com/rich-presence) plugin for [Lapce Editor](https://lapce.dev/)
+
+>This project is currently in Beta, and there are still languages to be added :)
 
 ## Features
+- Shows what you are editing
+- Support for over **20+** of the most popular languages (`We will add more over time`)
+- Custom button support (`Soon`)
+- Detect when you are Idling
 
-- Shows what you are editing in Lapce Editor
+## Usage
+> Install lapcord language-server globally.
+
+```bash
+npm install lapcord-server -g
+```
 
 ## Preview
+![idling](https://user-images.githubusercontent.com/54212600/230227212-a1bb2f23-9104-4a27-9006-96b5a91c67fc.png)
 
-![image](https://user-images.githubusercontent.com/54212600/229298064-3684e875-1baa-4e83-ab3b-d80f016bf30c.png)
+![typescript](https://user-images.githubusercontent.com/54212600/230227232-8821901e-f75c-4d5f-81b7-63c4866e1415.png)
 
-## Installation
+## Contributors
 
-Idk
-
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks goes to these wonderful people:
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
