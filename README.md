@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://plugins.lapce.dev/plugins/dou/lapcord">
+  <a href="https://plugins.lapce.dev/plugins/Hyduez/dou.lapcord">
     <img width="200" src="assets/logo.png">
   </a>
 </p>
