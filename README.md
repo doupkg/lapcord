@@ -29,7 +29,11 @@
 > Install lapcord language-server globally.
 
 ```bash
-npm install lapcord -g
+npm install -g lapcord
+# or
+yarn global add lapcord
+# or
+pnpm add -g lapcord
 ```
 
 ## Preview
