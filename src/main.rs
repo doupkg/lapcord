@@ -1,13 +1,23 @@
 #![deny(clippy::print_stdout)]
 #![deny(clippy::print_stderr)]
 
-use anyhow::{anyhow, Result};
+use anyhow::{ anyhow, Result };
 use lapce_plugin::{
     psp_types::{
-        lsp_types::{request::Initialize, DocumentFilter, DocumentSelector, InitializeParams, Url, MessageType},
+        lsp_types::{
+            request::Initialize,
+            DocumentFilter,
+            DocumentSelector,
+            InitializeParams,
+            Url,
+            MessageType,
+        },
         Request,
     },
-    register_plugin, LapcePlugin, VoltEnvironment, PLUGIN_RPC,
+    register_plugin,
+    LapcePlugin,
+    VoltEnvironment,
+    PLUGIN_RPC,
 };
 use serde_json::Value;
 
@@ -17,11 +27,17 @@ struct State {}
 register_plugin!(State);
 
 macro_rules! ok {
-    ( $x:expr ) => {
+    ($x:expr) => {
         match ($x) {
             Ok(v) => v,
             Err(e) => return Err(anyhow!(e)),
         }
+    };
+}
+
+macro_rules! string {
+    ($x:expr) => {
+      String::from($x)
     };
 }
 
@@ -31,12 +47,12 @@ fn initialize(params: InitializeParams) -> Result<()> {
         // lsp language id Some(string!("typescript"))
         language: None,
         // glob pattern
-        pattern: Some(String::from("*")),
+        pattern: Some(string!("*")),
         // like file:
         scheme: None,
     }];
 
-    let mut server_args = vec![String::from("--stdio")];
+    let mut server_args = vec![string!("--stdio")];
     // Check for user specified LSP server path
     // ```
     // [lapce-plugin-name.lsp]
@@ -44,7 +60,7 @@ fn initialize(params: InitializeParams) -> Result<()> {
     // serverArgs = ["--arg1", "--arg2"]
     // ```
     if let Some(options) = params.initialization_options.as_ref() {
-        if let Some(lsp) = options.get("lsp") {
+        if let Some(lsp) = options.get("volt") {
             if let Some(args) = lsp.get("serverArgs") {
                 if let Some(args) = args.as_array() {
                     if !args.is_empty() {
@@ -62,12 +78,21 @@ fn initialize(params: InitializeParams) -> Result<()> {
                 if let Some(server_path) = server_path.as_str() {
                     if !server_path.is_empty() {
                         let server_uri = Url::parse(&format!("urn:{}", server_path))?;
-                        PLUGIN_RPC.start_lsp(
-                            server_uri,
-                            server_args,
-                            document_selector,
-                            params.initialization_options,
-                        );
+                        if
+                            let Err(e) = PLUGIN_RPC.start_lsp(
+                                server_uri,
+                                server_args,
+                                document_selector,
+                                params.initialization_options
+                            )
+                        {
+                            ok!(
+                                PLUGIN_RPC.window_show_message(
+                                    MessageType::ERROR,
+                                    format!("plugin returned with error: {e}")
+                                )
+                            );
+                        }
                         return Ok(());
                     }
                 }
@@ -86,12 +111,21 @@ fn initialize(params: InitializeParams) -> Result<()> {
 
     // Available language IDs
     // https://github.com/lapce/lapce/blob/HEAD/lapce-proxy/src/buffer.rs#L173
-    PLUGIN_RPC.start_lsp(
-        server_uri,
-        server_args,
-        document_selector,
-        params.initialization_options,
-    );
+    if
+        let Err(e) = PLUGIN_RPC.start_lsp(
+            server_uri,
+            server_args,
+            document_selector,
+            params.initialization_options
+        )
+    {
+        ok!(
+            PLUGIN_RPC.window_show_message(
+                MessageType::ERROR,
+                format!("plugin returned with error: {e}")
+            )
+        );
+    }
     Ok(())
 }
 
@@ -102,8 +136,10 @@ impl LapcePlugin for State {
             Initialize::METHOD => {
                 let params: InitializeParams = serde_json::from_value(params).unwrap();
                 if let Err(e) = initialize(params) {
-                    PLUGIN_RPC.window_show_message(MessageType::ERROR, format!("plugin returned with error: {e}"))
-                        .expect("Error")
+                    PLUGIN_RPC.window_show_message(
+                        MessageType::ERROR,
+                        format!("plugin returned with error: {e}")
+                    ).expect("Error")
                 }
             }
             _ => {}
