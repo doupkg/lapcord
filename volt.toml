@@ -17,7 +17,7 @@ description = "Path to custom LSP executable"
 
 [config."volt.serverArgs"]
 default = []
-description = "Arguments to pass to custom LSP executable"
+description = "Arguments to pass to LSP executable"
 
 [config."lapcord.editing.state"]
 default = "Editing {filename}"
@@ -35,10 +35,21 @@ description = "Show timestamp when editing file"
 default = "Idle"
 description = "State when idle or AFK"
 
+[config."lapcord.TimeoutToIdle"]
+default = 60000
+description = """
+Timeout to show idle state
+
+Why? 
+  Lapce not notify the server when a file is closed, so auto idle shows idle state after a specific time
+
+In Millisecons
+"""
+
 [config."lapcord.idle.details"]
 default = ""
 description = "Details when idle or AFK"
 
 [config."lapcord.idle.showTimestamp"]
-default = false
+default = true
 description = "Show timestamp when idle or AFK"
