@@ -19,22 +19,6 @@ description = "Path to custom LSP executable"
 default = []
 description = "Arguments to pass to LSP executable"
 
-[config."lapcord.editing.state"]
-default = "Editing {filename}"
-description = "State when editing file"
-
-[config."lapcord.editing.details"]
-default = ""
-description = "Details when editing file"
-
-[config."lapcord.editing.showTimestamp"]
-default = true
-description = "Show timestamp when editing file"
-
-[config."lapcord.idle.state"]
-default = "Idle"
-description = "State when idle or AFK"
-
 [config."lapcord.TimeoutToIdle"]
 default = 60000
 description = """
@@ -46,10 +30,44 @@ Why?
 In Millisecons
 """
 
+# Editing
+[config."lapcord.editing.state"]
+default = "Editing {filename}"
+description = "State when EDITING file"
+
+[config."lapcord.editing.details"]
+default = ""
+description = "Details when EDITING file"
+
+[config."lapcord.editing.showTimestamp"]
+default = true
+description = "Show timestamp when EDITING file"
+
+[config."lapcord.editing.largeImageText"]
+default = ""
+description = "LargeImage Text when EDITING file"
+
+[config."lapcord.editing.smallImageText"]
+default = ""
+description = "SmallImage Text when EDITING file"
+
+# Idle
+[config."lapcord.idle.state"]
+default = "Editing {filename}"
+description = "State when IDLE"
+
 [config."lapcord.idle.details"]
 default = ""
-description = "Details when idle or AFK"
+description = "Details when IDLE"
 
 [config."lapcord.idle.showTimestamp"]
 default = true
-description = "Show timestamp when idle or AFK"
+description = "Show timestamp when IDLE"
+
+[config."lapcord.idle.largeImageText"]
+default = ""
+description = "Text on large image when IDLE"
+
+[config."lapcord.idle.smallImageText"]
+default = ""
+description = "Text on small image when IDLE"
