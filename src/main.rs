@@ -1,23 +1,16 @@
 #![deny(clippy::print_stdout)]
 #![deny(clippy::print_stderr)]
 
-use anyhow::{ anyhow, Result };
+use anyhow::{anyhow, Result};
 use lapce_plugin::{
     psp_types::{
         lsp_types::{
-            request::Initialize,
-            DocumentFilter,
-            DocumentSelector,
-            InitializeParams,
+            request::Initialize, DocumentFilter, DocumentSelector, InitializeParams, MessageType,
             Url,
-            MessageType,
         },
         Request,
     },
-    register_plugin,
-    LapcePlugin,
-    VoltEnvironment,
-    PLUGIN_RPC,
+    register_plugin, LapcePlugin, VoltEnvironment, PLUGIN_RPC,
 };
 use serde_json::Value;
 
@@ -37,7 +30,7 @@ macro_rules! ok {
 
 macro_rules! string {
     ($x:expr) => {
-      String::from($x)
+        String::from($x)
     };
 }
 
@@ -52,16 +45,18 @@ fn initialize(params: InitializeParams) -> Result<()> {
         scheme: None,
     }];
 
-    let mut server_args = vec![string!("--stdio")];
+    let mut server_args: Vec<String> = vec![string!("--stdio")];
+    let mut lapcord_options: Option<Value> = None;
     // Check for user specified LSP server path
     // ```
     // [lapce-plugin-name.lsp]
     // serverPath = "[path or filename]"
     // serverArgs = ["--arg1", "--arg2"]
     // ```
-    if let Some(options) = params.initialization_options.as_ref() {
-        if let Some(lsp) = options.get("volt") {
-            if let Some(args) = lsp.get("serverArgs") {
+    if let Some(opts) = params.initialization_options.as_ref() {
+        lapcord_options = opts.get("lapcord").map(|k| k.to_owned());
+        if let Some(volt) = opts.get("volt") {
+            if let Some(args) = volt.get("serverArgs") {
                 if let Some(args) = args.as_array() {
                     if !args.is_empty() {
                         server_args = vec![];
@@ -74,24 +69,20 @@ fn initialize(params: InitializeParams) -> Result<()> {
                 }
             }
 
-            if let Some(server_path) = lsp.get("serverPath") {
+            if let Some(server_path) = volt.get("serverPath") {
                 if let Some(server_path) = server_path.as_str() {
                     if !server_path.is_empty() {
                         let server_uri = Url::parse(&format!("urn:{}", server_path))?;
-                        if
-                            let Err(e) = PLUGIN_RPC.start_lsp(
-                                server_uri,
-                                server_args,
-                                document_selector,
-                                params.initialization_options
-                            )
-                        {
-                            ok!(
-                                PLUGIN_RPC.window_show_message(
-                                    MessageType::ERROR,
-                                    format!("plugin returned with error: {e}")
-                                )
-                            );
+                        if let Err(e) = PLUGIN_RPC.start_lsp(
+                            server_uri,
+                            server_args,
+                            document_selector,
+                            lapcord_options,
+                        ) {
+                            ok!(PLUGIN_RPC.window_show_message(
+                                MessageType::ERROR,
+                                format!("plugin returned with error: {e}")
+                            ));
                         }
                         return Ok(());
                     }
@@ -111,20 +102,16 @@ fn initialize(params: InitializeParams) -> Result<()> {
 
     // Available language IDs
     // https://github.com/lapce/lapce/blob/HEAD/lapce-proxy/src/buffer.rs#L173
-    if
-        let Err(e) = PLUGIN_RPC.start_lsp(
-            server_uri,
-            server_args,
-            document_selector,
-            params.initialization_options
-        )
-    {
-        ok!(
-            PLUGIN_RPC.window_show_message(
-                MessageType::ERROR,
-                format!("plugin returned with error: {e}")
-            )
-        );
+    if let Err(e) = PLUGIN_RPC.start_lsp(
+        server_uri,
+        server_args,
+        document_selector,
+        lapcord_options,
+    ) {
+        ok!(PLUGIN_RPC.window_show_message(
+            MessageType::ERROR,
+            format!("plugin returned with error: {e}")
+        ));
     }
     Ok(())
 }
@@ -138,8 +125,8 @@ impl LapcePlugin for State {
                 if let Err(e) = initialize(params) {
                     PLUGIN_RPC.window_show_message(
                         MessageType::ERROR,
-                        format!("plugin returned with error: {e}")
-                    ).expect("Error")
+                        format!("plugin returned with error: {e}"),
+                    ).ok();
                 }
             }
             _ => {}
