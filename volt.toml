@@ -1,4 +1,4 @@
-name = "dou.lapcord"
+name = "dou-lapcord"
 author = "Dou"
 version = "0.0.4"
 display-name = "Lapcord"
@@ -17,7 +17,7 @@ description = "Path to custom LSP executable"
 
 [config."volt.serverArgs"]
 default = []
-description = "Arguments to pass to custom Go LSP executable"
+description = "Arguments to pass to custom LSP executable"
 
 [config."lapcord.editing.state"]
 default = "Editing {filename}"
@@ -40,5 +40,5 @@ default = ""
 description = "Details when idle or AFK"
 
 [config."lapcord.idle.showTimestamp"]
-default = ""
+default = false
 description = "Show timestamp when idle or AFK"
