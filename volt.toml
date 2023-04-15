@@ -17,7 +17,7 @@ description = "Path to custom LSP executable"
 
 [config."volt.serverArgs"]
 default = []
-description = "Arguments to pass to LSP executable"
+description = "Arguments to pass into LSP executable"
 
 [config."lapcord.TimeoutToIdle"]
 default = 60000
@@ -25,7 +25,7 @@ description = """
 Timeout to show idle state
 
 Why? 
-  Lapce not notify the server when a file is closed, so auto idle shows idle state after a specific time
+  Lapce does not notify the server when a file is closed, so, auto idle shows idle state after a specific time.
 
 In Millisecons
 """
@@ -41,7 +41,7 @@ description = "Details when EDITING file"
 
 [config."lapcord.editing.showTimestamp"]
 default = true
-description = "Show timestamp when EDITING file"
+description = "Whether to show or not a timestamp when EDITING file"
 
 [config."lapcord.editing.largeImageText"]
 default = ""
@@ -62,7 +62,7 @@ description = "Details when IDLE"
 
 [config."lapcord.idle.showTimestamp"]
 default = true
-description = "Show timestamp when IDLE"
+description = "Whether to show or not a timestamp when IDLE"
 
 [config."lapcord.idle.largeImageText"]
 default = ""
