@@ -53,7 +53,7 @@ description = "SmallImage Text when EDITING file"
 
 # Idle
 [config."lapcord.idle.state"]
-default = "Editing {filename}"
+default = "Idle"
 description = "State when IDLE"
 
 [config."lapcord.idle.details"]
