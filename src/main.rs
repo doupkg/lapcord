@@ -45,7 +45,7 @@ fn initialize(params: InitializeParams) -> Result<()> {
         scheme: None,
     }];
 
-    let mut server_args: Vec<String> = vec![string!("--stdio")];
+    let server_args: Vec<String> = vec![string!("--stdio")];
     let mut lapcord_options: Option<Value> = None;
     // Check for user specified LSP server path
     // ```
@@ -55,40 +55,6 @@ fn initialize(params: InitializeParams) -> Result<()> {
     // ```
     if let Some(opts) = params.initialization_options.as_ref() {
         lapcord_options = opts.get("lapcord").map(|k| k.to_owned());
-        if let Some(volt) = opts.get("volt") {
-            if let Some(args) = volt.get("serverArgs") {
-                if let Some(args) = args.as_array() {
-                    if !args.is_empty() {
-                        server_args = vec![];
-                    }
-                    for arg in args {
-                        if let Some(arg) = arg.as_str() {
-                            server_args.push(arg.to_string());
-                        }
-                    }
-                }
-            }
-
-            if let Some(server_path) = volt.get("serverPath") {
-                if let Some(server_path) = server_path.as_str() {
-                    if !server_path.is_empty() {
-                        let server_uri = Url::parse(&format!("urn:{}", server_path))?;
-                        if let Err(e) = PLUGIN_RPC.start_lsp(
-                            server_uri,
-                            server_args,
-                            document_selector,
-                            lapcord_options,
-                        ) {
-                            ok!(PLUGIN_RPC.window_show_message(
-                                MessageType::ERROR,
-                                format!("plugin returned with error: {e}")
-                            ));
-                        }
-                        return Ok(());
-                    }
-                }
-            }
-        }
     }
 
     // Plugin working directory

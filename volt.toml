@@ -1,6 +1,6 @@
 name = "dou-lapcord"
 author = "Dou"
-version = "0.0.4"
+version = "2.1.0"
 display-name = "Lapcord"
 description = "Discord Rich Presence extension for Lapce Editor."
 wasm = "bin/lapcord.wasm"
@@ -11,63 +11,48 @@ repository = "https://github.com/doupkg/lapcord"
 language = []
 workspace-contains = ["*"]
 
-[config."volt.serverPath"]
-default = ""
-description = "Path to custom LSP executable"
-
-[config."volt.serverArgs"]
-default = []
-description = "Arguments to pass into LSP executable"
-
-[config."lapcord.TimeoutToIdle"]
-default = 60000
-description = """
-Timeout to show idle state
-
-Why? 
-  Lapce does not notify the server when a file is closed, so, auto idle shows idle state after a specific time.
-
-In Millisecons
-"""
-
 # Editing
-[config."lapcord.editing.state"]
-default = "Editing {filename}"
-description = "State when EDITING file"
-
 [config."lapcord.editing.details"]
 default = ""
-description = "Details when EDITING file"
-
-[config."lapcord.editing.showTimestamp"]
-default = true
-description = "Whether to show or not a timestamp when EDITING file"
+description = ""
 
 [config."lapcord.editing.largeImageText"]
 default = ""
-description = "LargeImage Text when EDITING file"
+description = ""
+
+[config."lapcord.editing.showTimestamp"]
+default = true
+description = ""
 
 [config."lapcord.editing.smallImageText"]
 default = ""
-description = "SmallImage Text when EDITING file"
+description = ""
+
+[config."lapcord.editing.state"]
+default = "Editing {filename}"
+description = ""
 
 # Idle
-[config."lapcord.idle.state"]
-default = "Idle"
-description = "State when IDLE"
-
 [config."lapcord.idle.details"]
 default = ""
-description = "Details when IDLE"
-
-[config."lapcord.idle.showTimestamp"]
-default = true
-description = "Whether to show or not a timestamp when IDLE"
+description = ""
 
 [config."lapcord.idle.largeImageText"]
 default = ""
-description = "Text on large image when IDLE"
+description = ""
+
+[config."lapcord.idle.showTimestamp"]
+default = true
+description = ""
 
 [config."lapcord.idle.smallImageText"]
 default = ""
-description = "Text on small image when IDLE"
+description = ""
+
+[config."lapcord.idle.state"]
+default = "Idle"
+description = ""
+
+[config."lapcord.idle.timeout"]
+default = 60
+description = "In seconds. Min 15s"
