@@ -11,6 +11,10 @@ repository = "https://github.com/doupkg/lapcord"
 language = []
 workspace-contains = ["*"]
 
+[config."serverPath"]
+default = "lapcord"
+description = "Path to server"
+
 # Editing
 [config."lapcord.editing.details"]
 default = ""
