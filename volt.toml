@@ -12,8 +12,8 @@ language = []
 workspace-contains = ["*"]
 
 [config."serverPath"]
-default = "lapcord"
-description = "Path to server"
+default = ""
+description = "Path to server. When empty, will download automatically"
 
 # Editing
 [config."lapcord.editing.details"]

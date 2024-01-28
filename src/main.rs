@@ -45,7 +45,12 @@ fn initialize(params: InitializeParams) -> Result<()> {
         scheme: None,
     }];
 
-    let server_args: Vec<String> = vec![string!("--stdio")];
+    let volt_uri = std::env::var("VOLT_URI")?;
+    let mut server_uri = Url::parse(&volt_uri)
+        .unwrap()
+        .join("bin/lapcord-server")
+        .unwrap();
+    let server_args: Vec<String> = vec![];
     let mut lapcord_options: Option<Value> = None;
     // Check for user specified LSP server path
     // ```
@@ -55,13 +60,20 @@ fn initialize(params: InitializeParams) -> Result<()> {
     // ```
     if let Some(opts) = params.initialization_options.as_ref() {
         lapcord_options = opts.get("lapcord").map(|k| k.to_owned());
+        if let Some(server_path) = opts.get("serverPath") {
+            if let Some(server_path) = server_path.as_str() {
+                if !server_path.is_empty() {
+                    server_uri = Url::parse(&format!("urn:{}", server_path))?;
+                }
+            }
+        }
     }
 
     // Plugin working directory
-    let server_uri = match VoltEnvironment::operating_system().as_deref() {
-        Ok("windows") => ok!(Url::parse("urn:lapcord.cmd")),
-        _ => ok!(Url::parse("urn:lapcord")),
-    };
+    // let server_uri = match VoltEnvironment::operating_system().as_deref() {
+    //     Ok("windows") => ok!(Url::parse("urn:lapcord.cmd")),
+    //     _ => ok!(Url::parse("urn:lapcord")),
+    // };
 
     // if you want to use server from PATH
     // let server_uri = Url::parse(&format!("urn:{filename}"))?;
